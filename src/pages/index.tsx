@@ -2,10 +2,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import {useState} from "react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const [count, setCount] = useState(0)
+
   return (
     <>
       <Head>
@@ -107,6 +112,16 @@ export default function Home() {
               with&nbsp;Vercel.
             </p>
           </a>
+
+          <h2 className={styles.card}>
+            <div>{count}</div>
+            <button onClick={() => {
+              setCount(prev => prev + 1)
+            }}>Increment</button>
+            <div>
+              <Link href={'/users'}>Users</Link>
+            </div>
+          </h2>
         </div>
       </main>
     </>
